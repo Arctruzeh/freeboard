@@ -1,0 +1,76 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"width": 1,
+			"row": {
+				"2": 1,
+				"3": 1
+			},
+			"col": {
+				"2": 1,
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "monitor_grid",
+					"settings": {
+						"the_title1": "Fuel Rate",
+						"the_data1": "123",
+						"the_unit1": "GPH",
+						"the_title2": "Eng Load",
+						"the_data2": "12",
+						"the_unit2": "%",
+						"the_title3": "Oil Press",
+						"the_data3": "12",
+						"the_unit3": "PSI",
+						"the_title4": "Eng Temp",
+						"the_data4": "123",
+						"the_unit4": "F",
+						"the_title5": "Batt Volt",
+						"the_data5": "12",
+						"the_unit5": "V",
+						"the_title6": "Eng Hours",
+						"the_data6": "123",
+						"the_unit6": "H"
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"2": 1,
+				"3": 1
+			},
+			"col": {
+				"2": 2,
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "single_monitor",
+					"settings": {
+						"sm_Title": "123",
+						"sm_Data": "123",
+						"sm_Unit": "123"
+					}
+				},
+				{
+					"type": "single_monitor",
+					"settings": {
+						"sm_Title": "123",
+						"sm_Data": "123",
+						"sm_Unit": "123"
+					}
+				}
+			]
+		}
+	],
+	"datasources": [],
+	"columns": 3
+}
