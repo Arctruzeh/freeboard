@@ -11,20 +11,20 @@
     <link href="css/freeboard.min.css" rel="stylesheet" />
     <script src="js/freeboard.thirdparty.min.js"></script>
     <script type="text/javascript">
-        head.js("js/freeboard_plugins.min.js",
-            //'plugins/midnetmedia/mmInfoPanel.js',
-            //'plugins/midnetmedia/mmTwoAction.js',
-            //'plugins/midnetmedia/mmMomentaryPB.js',
-            'plugins/midnetmedia/mmEngineControl.js',
-            'plugins/midnetmedia/mmEngineControl.css',
-            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/mmInfoPanel.js',
-            //'plugins/midnetmedia/mmTest.js',
-            //'plugins/midnetmedia/mmTest.css',
-            // *** Load more plugins here ***
+        head.js(
+            "js/freeboard_plugins.min.js",
+            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/singleMonitor.min.js',
+            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/monitorGrid.min.js',
+            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/mmInfoPanel.min.js',
+            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/mmMomentaryPB.min.js',
+            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/mmWatchdog.min.js',
+            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/mmSingleButton.min.js',
+            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/mmValveControl.min.js',
+            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/mmEngineControl.min.js',
+            'https://cdn.jsdelivr.net/gh/Arctruzeh/freeboard/plugins/midnetmedia/mmEngineControl.min.css',
             function () {
                 $(function () { //DOM Ready
                     freeboard.initialize(true);
-
                     var hashpattern = window.location.hash.match(/(&|#)source=([^&]+)/);
                     if (hashpattern !== null) {
                         $.getJSON(hashpattern[2], function (data) {
