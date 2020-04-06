@@ -172,25 +172,25 @@
         var ec = $('<div class="ec-"></div>')
         var ec = $('<div class="ec-"></div>')
 
-        //var ecEngineState
+        var ecEngineState
 
         this.onEngineClicked = function (e) {
-            e.preventDefault();
+            e.preventDefault()
             let payloadSend
             if (ecEngineState = 'off') {
-                payloadSend = '{"button_1":1, "button_2":0}';
+                payloadSend = '{"button_1":1, "button_2":0}'
             } else {
-                payloadSend = '{"button_1":0, "button_2":1}';
+                payloadSend = '{"button_1":0, "button_2":1}'
             }
-            let plSend = JSON.stringify(payloadSend);
-            this.sendValue(settings.ec_engine_send, plSend);
+            let plSend = JSON.stringify(payloadSend)
+            this.sendValue(settings.ec_engine_send, plSend)
         }
 
         self.render = function (containerElement) {
 
             $(containerElement).empty()
 
-            $(ecEngineButtonInner).click(this.onEngineClicked.bind(this));
+            $(ecEngineButtonInner).click(this.onEngineClicked.bind(this))
 
             $(ecEngine).append(
                 ecEngineButton.append(
@@ -274,22 +274,25 @@
 
         self.onCalculatedValueChanged = function (settingName, newValue) {
 
-            if (settingName == "ec_engine_color") { $(ecEngineButtonInnerBg).css({ "background": newValue }); }
-            if (settingName == "ec_engine_text_color") { $(ecEngineButtonInner).css({ "color": newValue }); }
-            if (settingName == "ec_engine_status") { $(ecEngineStatus).html(newValue); }
-            if (settingName == "ec_engine_status") { ecEngineState = newValue; console.log(newValue) }
+            if (settingName == "ec_engine_color") { $(ecEngineButtonInnerBg).css({ "background": newValue }) }
+            if (settingName == "ec_engine_text_color") { $(ecEngineButtonInner).css({ "color": newValue }) }
+            if (settingName == "ec_engine_status") { $(ecEngineStatus).html(newValue) }
+            if (settingName == "ec_engine_status") {
+                ecEngineState = newValue
+                console.log(ecEngineState)
+            }
 
-            if (settingName == "ec_idle_color") { $(ecIdleButtonInnerBg).css({ "background": newValue }); }
-            if (settingName == "ec_idle_text_color") { $(ecIdleButtonInner).css({ "color": newValue }); }
-            if (settingName == "ec_idle_status") { $(ecIdleStatus).html(newValue); }
+            if (settingName == "ec_idle_color") { $(ecIdleButtonInnerBg).css({ "background": newValue }) }
+            if (settingName == "ec_idle_text_color") { $(ecIdleButtonInner).css({ "color": newValue }) }
+            if (settingName == "ec_idle_status") { $(ecIdleStatus).html(newValue) }
 
-            if (settingName == "ec_clutch_color") { $(ecClutchButtonInnerBg).css({ "background": newValue }); }
-            if (settingName == "ec_clutch_text_color") { $(ecClutchButtonInner).css({ "color": newValue }); }
-            if (settingName == "ec_clutch_status") { $(ecClutchStatus).html(newValue); }
+            if (settingName == "ec_clutch_color") { $(ecClutchButtonInnerBg).css({ "background": newValue }) }
+            if (settingName == "ec_clutch_text_color") { $(ecClutchButtonInner).css({ "color": newValue }) }
+            if (settingName == "ec_clutch_status") { $(ecClutchStatus).html(newValue) }
 
-            if (settingName == "ec_light_color") { $(ecLightButtonInnerBg).css({ "background": newValue }); }
-            if (settingName == "ec_light_text_color") { $(ecLightButtonInner).css({ "color": newValue }); }
-            if (settingName == "ec_light_status") { $(ecLightStatus).html(newValue); }
+            if (settingName == "ec_light_color") { $(ecLightButtonInnerBg).css({ "background": newValue }) }
+            if (settingName == "ec_light_text_color") { $(ecLightButtonInner).css({ "color": newValue }) }
+            if (settingName == "ec_light_status") { $(ecLightStatus).html(newValue) }
 
         }
 
