@@ -174,15 +174,19 @@
 
         this.onEngineClicked = function (e) {
             e.preventDefault()
+
             let payloadSend
-            let ecEngineState = settings.ec_engine_status
-            console.log(ecEngineState)
-            if (ecEngineState = 'off') {
+
+            this.onCalculatedValueChanged('ec_engine_status', new_val);
+
+            if (new_val = '-1') {
                 payloadSend = '{"button_1":1, "button_2":0}'
             } else {
                 payloadSend = '{"button_1":0, "button_2":1}'
             }
+
             let plSend = JSON.stringify(payloadSend)
+
             this.sendValue(settings.ec_engine_send, plSend)
         }
 
@@ -276,7 +280,7 @@
 
             if (settingName == "ec_engine_color") { $(ecEngineButtonInnerBg).css({ "background": newValue }) }
             if (settingName == "ec_engine_text_color") { $(ecEngineButtonInner).css({ "color": newValue }) }
-            if (settingName == "ec_engine_status") {$(ecEngineStatus).html(newValue)}
+            if (settingName == "ec_engine_status") { $(ecEngineStatus).html(newValue) }
 
             if (settingName == "ec_idle_color") { $(ecIdleButtonInnerBg).css({ "background": newValue }) }
             if (settingName == "ec_idle_text_color") { $(ecIdleButtonInner).css({ "color": newValue }) }
