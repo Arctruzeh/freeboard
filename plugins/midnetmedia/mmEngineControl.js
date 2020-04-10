@@ -171,10 +171,12 @@
 
             console.log('line 172 ' + ecEngineState)
 
-            if (ecEngineState = '-1') {
+            if (ecEngineState === 3) {//Running
+                payloadSend = '{"button_1":0, "button_2":1}'
+            } else if (ecEngineState === 1) {//Stopped
                 payloadSend = '{"button_1":1, "button_2":0}'
             } else {
-                payloadSend = '{"button_1":0, "button_2":1}'
+                payloadSend = ''
             }
 
             console.log('line 180 ' + ecEngineState)
