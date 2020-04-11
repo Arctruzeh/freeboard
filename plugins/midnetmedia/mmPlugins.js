@@ -1,6 +1,6 @@
 var mmDomain
 
-if (document.domain = '127.0.0.1'){
+if (document.domain === '127.0.0.1'){
     mmDomain = ''
 } else {
     mmDomain = 'https://mmfreeboard.netlify.com/'
