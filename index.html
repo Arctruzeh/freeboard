@@ -10,38 +10,7 @@
     <meta name="viewport" content="width = device-width, initial-scale = 1, user-scalable = no" />
     <link href="css/freeboard.min.css" rel="stylesheet" />
     <script src="js/freeboard.thirdparty.min.js"></script>
-    <script type="text/javascript">
-        head.js(
-            "js/freeboard_plugins.min.js",
-
-            'https://dashboard.spoke.zone/plugins/mqtt/paho.mqtt.plugin.js',
-            'https://dashboard.spoke.zone/plugins/mqtt/mqttPublisher.js',
-            'https://dashboard.spoke.zone/plugins/datasources/mrsDatasource.js',
-
-            'plugins/midnetmedia/mmPlugins.css',
-            'plugins/midnetmedia/singleMonitor.js',
-            'plugins/midnetmedia/monitorGrid.js',
-            'plugins/midnetmedia/mmInfoPanel.js',
-            'plugins/midnetmedia/mmMomentaryPB.js',
-            'plugins/midnetmedia/mmWatchdog.js',
-            'plugins/midnetmedia/mmSingleButton.js',
-            'plugins/midnetmedia/mmValveControl.js',
-            'plugins/midnetmedia/mmEngineControl.js',
-            function () {
-                $(function () { //DOM Ready
-                    freeboard.initialize(true);
-                    var hashpattern = window.location.hash.match(/(&|#)source=([^&]+)/);
-                    if (hashpattern !== null) {
-                        $.getJSON(hashpattern[2], function (data) {
-                            freeboard.loadDashboard(data, function () {
-                                freeboard.setEditing(false);
-                            });
-                        });
-                    }
-
-                });
-            });
-    </script>
+    <script src="head.js"></script>
 </head>
 
 <body>
