@@ -24,16 +24,6 @@
                 type: "calculated"
             },
             {
-                name: "ec_engine_color",
-                display_name: "Engine Button Color",
-                type: "calculated"
-            },
-            {
-                name: "ec_engine_text_color",
-                display_name: "Engine Text Color",
-                type: "calculated"
-            },
-            {
                 name: "ec_idle_status",
                 display_name: "Idle Current Status",
                 type: "calculated"
@@ -41,16 +31,6 @@
             {
                 name: "ec_idle_send",
                 display_name: "Idle Change Status",
-                type: "calculated"
-            },
-            {
-                name: "ec_idle_color",
-                display_name: "Idle Button Color",
-                type: "calculated"
-            },
-            {
-                name: "ec_idle_text_color",
-                display_name: "Idle Text Color",
                 type: "calculated"
             },
             {
@@ -64,16 +44,6 @@
                 type: "calculated"
             },
             {
-                name: "ec_clutch_color",
-                display_name: "Clutch Button Color",
-                type: "calculated"
-            },
-            {
-                name: "ec_clutch_text_color",
-                display_name: "Clutch Text Color",
-                type: "calculated"
-            },
-            {
                 name: "ec_light_status",
                 display_name: "Light Current Status",
                 type: "calculated"
@@ -81,16 +51,6 @@
             {
                 name: "ec_light_send",
                 display_name: "Light Change Status",
-                type: "calculated"
-            },
-            {
-                name: "ec_light_color",
-                display_name: "Light Button Color",
-                type: "calculated"
-            },
-            {
-                name: "ec_light_text_color",
-                display_name: "Light Text Color",
                 type: "calculated"
             },
         ],
@@ -163,7 +123,7 @@
         var ecMinusMinus = $('<svg width="56px" height="43px" viewBox="0 0 56 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="99.6116329%" gradientTransform="translate(0.500000,0.000000),scale(0.535714,1.000000),rotate(90.000000),translate(-0.500000,-0.000000)" id="radialGradient-1"><stop stop-color="#8F8F8F" offset="0%"></stop><stop stop-color="#6B6B6B" offset="100%"></stop></radialGradient></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-232.000000, -194.000000)"><g id="--" transform="translate(232.000000, 193.000000)"><path d="M28.7451866,11.5437709 L54.508356,40.3331439 C54.8766504,40.7446991 54.8415807,41.3768921 54.4300255,41.7451866 C54.2466612,41.9092765 54.0092345,42 53.7631695,42 L2.23683054,42 C1.68454579,42 1.23683054,41.5522847 1.23683054,41 C1.23683054,40.753935 1.32755402,40.5165083 1.49164398,40.3331439 L27.2548134,11.5437709 C27.6231079,11.1322157 28.2553009,11.097146 28.6668561,11.4654404 C28.6943935,11.4900832 28.7205437,11.5162335 28.7451866,11.5437709 Z" id="Triangle-Copy-14" stroke="#42424E" fill="url(#radialGradient-1)" transform="translate(28.000000, 27.000000) scale(1, -1) translate(-28.000000, -27.000000) "></path><path d="M28.7451866,1.54377091 L54.508356,30.3331439 C54.8766504,30.7446991 54.8415807,31.3768921 54.4300255,31.7451866 C54.2466612,31.9092765 54.0092345,32 53.7631695,32 L2.23683054,32 C1.68454579,32 1.23683054,31.5522847 1.23683054,31 C1.23683054,30.753935 1.32755402,30.5165083 1.49164398,30.3331439 L27.2548134,1.54377091 C27.6231079,1.13221574 28.2553009,1.09714597 28.6668561,1.4654404 C28.6943935,1.49008321 28.7205437,1.51623349 28.7451866,1.54377091 Z" id="Triangle-Copy-15" stroke="#42424E" fill="url(#radialGradient-1)" transform="translate(28.000000, 17.000000) scale(1, -1) translate(-28.000000, -17.000000) "></path><text id="100-copy" stroke="#000000" font-family="SourceSansPro-Black, Source Sans Pro" font-size="14" font-weight="700" fill="#FFFFFF"><tspan x="17" y="14">100</tspan></text></g></g></g></svg>')
 
         var ecEngineState
-        
+
         this.onEngineClicked = function (e) {
             e.preventDefault()
 
@@ -274,24 +234,39 @@
 
         self.onCalculatedValueChanged = function (settingName, newValue) {
 
-            if (settingName == "ec_engine_color") { $(ecEngineButtonInnerBg).css({ "background": newValue }) }
-            if (settingName == "ec_engine_text_color") { $(ecEngineButtonInner).css({ "color": newValue }) }
-            if (settingName == "ec_engine_status") { 
-                $(ecEngineStatus).html(newValue) 
+            if (settingName == "ec_engine_status") {
+                if (newValue === 1) {
+                    $(ecEngineStatus).html('STOPPED')
+                    $(ecEngineButtonInnerBg).css({ "background": '#b4c7e7' })
+                }
+                if (newValue === 2) {
+                    $(ecEngineStatus).html('STARTING')
+                    $(ecEngineButtonInnerBg).css({ "background": '#c5e0b4' })
+                }
+                if (newValue === 3) {
+                    $(ecEngineStatus).html('RUNNING')
+                    $(ecEngineButtonInnerBg).css({ "background": '#c5e0b4' })
+                }
+                if (newValue === 4) {
+                    $(ecEngineStatus).html('COUNTDOWN')
+                    $(ecEngineButtonInnerBg).css({ "background": '#FFA100' })
+                }
+                if (newValue === 5) {
+                    $(ecEngineStatus).html('SHUTDOWN')
+                    $(ecEngineButtonInnerBg).css({ "background": '#b4c7e7' })
+                }
+                if (newValue === -1) {
+                    $(ecEngineStatus).html('DISCONNECTED')
+                    $(ecEngineButtonInnerBg).css({ "background": 'grey' })
+                }
                 ecEngineState = newValue
                 console.log('line 276 ' + ecEngineState)
             }
 
-            if (settingName == "ec_idle_color") { $(ecIdleButtonInnerBg).css({ "background": newValue }) }
-            if (settingName == "ec_idle_text_color") { $(ecIdleButtonInner).css({ "color": newValue }) }
             if (settingName == "ec_idle_status") { $(ecIdleStatus).html(newValue) }
 
-            if (settingName == "ec_clutch_color") { $(ecClutchButtonInnerBg).css({ "background": newValue }) }
-            if (settingName == "ec_clutch_text_color") { $(ecClutchButtonInner).css({ "color": newValue }) }
             if (settingName == "ec_clutch_status") { $(ecClutchStatus).html(newValue) }
 
-            if (settingName == "ec_light_color") { $(ecLightButtonInnerBg).css({ "background": newValue }) }
-            if (settingName == "ec_light_text_color") { $(ecLightButtonInner).css({ "color": newValue }) }
             if (settingName == "ec_light_status") { $(ecLightStatus).html(newValue) }
 
         }
