@@ -1,4 +1,10 @@
-var mmDomain = window.location.href 
+var mmDomain
+
+if (document.domain = '127.0.0.1'){
+    mmDomain = ''
+} else {
+    mmDomain = 'https://mmfreeboard.netlify.com/'
+}
 
 $.getScript(mmDomain + "plugins/midnetmedia/mmEngineControl.js")
 $.getScript(mmDomain + "plugins/midnetmedia/mmInfoPanel.js")
