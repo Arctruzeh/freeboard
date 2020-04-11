@@ -158,9 +158,9 @@
         this.onClutchClicked = function (e) {
             e.preventDefault()
             let payloadSend
-            if (ecClutchState === 3) {//Running
+            if (ecClutchState === 1) {//Running
                 payloadSend = '{"button_1":0, "button_2":1}'
-            } else if (ecClutchState === 1) {//Stopped
+            } else if (ecClutchState === 0) {//Stopped
                 payloadSend = '{"button_1":1, "button_2":0}'
             } else {
                 payloadSend = ''
@@ -172,9 +172,9 @@
         this.onLightClicked = function (e) {
             e.preventDefault()
             let payloadSend
-            if (ecLightState === 3) {//Running
+            if (ecLightState === 1) {//Running
                 payloadSend = '{"button_1":0, "button_2":1}'
-            } else if (ecLightState === 1) {//Stopped
+            } else if (ecLightState === 0) {//Stopped
                 payloadSend = '{"button_1":1, "button_2":0}'
             } else {
                 payloadSend = ''
@@ -331,25 +331,13 @@
             }
 
             if (settingName == "ec_clutch_status") {
+                if (newValue === 0) {
+                    $(ecClutchStatus).html('DISENGAGED')
+                    $(ecClutchButtonInnerBg).css({ "background": '#b4c7e7' })
+                }
                 if (newValue === 1) {
-                    $(ecClutchStatus).html('STOPPED')
-                    $(ecClutchButtonInnerBg).css({ "background": '#b4c7e7' })
-                }
-                if (newValue === 2) {
-                    $(ecClutchStatus).html('STARTING')
+                    $(ecClutchStatus).html('ENGAGED')
                     $(ecClutchButtonInnerBg).css({ "background": '#c5e0b4' })
-                }
-                if (newValue === 3) {
-                    $(ecClutchStatus).html('RUNNING')
-                    $(ecClutchButtonInnerBg).css({ "background": '#c5e0b4' })
-                }
-                if (newValue === 4) {
-                    $(ecClutchStatus).html('COUNTDOWN')
-                    $(ecClutchButtonInnerBg).css({ "background": '#FFA100' })
-                }
-                if (newValue === 5) {
-                    $(ecClutchStatus).html('SHUTDOWN')
-                    $(ecClutchButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === -1) {
                     $(ecClutchStatus).html('DISCONNECTED')
@@ -359,28 +347,16 @@
             }
 
             if (settingName == "ec_light_status") {
+                if (newValue === 0) {
+                    $(ecLightStatus).html('OFF')
+                    $(ecLightButtonInnerBg).css({ "background": '#b4c7e7' })
+                }
                 if (newValue === 1) {
-                    $(ecLightStatus).html('STOPPED')
-                    $(ecLightButtonInnerBg).css({ "background": '#b4c7e7' })
-                }
-                if (newValue === 2) {
-                    $(ecLightStatus).html('STARTING')
+                    $(ecLightStatus).html('ON')
                     $(ecLightButtonInnerBg).css({ "background": '#c5e0b4' })
-                }
-                if (newValue === 3) {
-                    $(ecLightStatus).html('RUNNING')
-                    $(ecLightButtonInnerBg).css({ "background": '#c5e0b4' })
-                }
-                if (newValue === 4) {
-                    $(ecLightStatus).html('COUNTDOWN')
-                    $(ecLightButtonInnerBg).css({ "background": '#FFA100' })
-                }
-                if (newValue === 5) {
-                    $(ecLightStatus).html('SHUTDOWN')
-                    $(ecLightButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === -1) {
-                    $(ecLightStatus).html('DISCONNECTED')
+                    $(ecLightStatus).html('DC')
                     $(ecLightButtonInnerBg).css({ "background": 'grey' })
                 }
                 ecLightState = newValue
