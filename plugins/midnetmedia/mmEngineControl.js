@@ -296,35 +296,23 @@
                     $(ecEngineButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === -1) {
-                    $(ecEngineStatus).html('DISCONNECTED')
+                    $(ecEngineStatus).html('DC')
                     $(ecEngineButtonInnerBg).css({ "background": 'grey' })
                 }
                 ecEngineState = newValue
             }
 
             if (settingName == "ec_idle_status") {
-                if (newValue === 1) {
-                    $(ecIdleStatus).html('STOPPED')
+                if (newValue > 0) {
+                    $(ecIdleStatus).html(newValue + ' RPM')
                     $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
-                if (newValue === 2) {
-                    $(ecIdleStatus).html('STARTING')
+                if (newValue === 0) {
+                    $(ecIdleStatus).html('--- RPM')
                     $(ecIdleButtonInnerBg).css({ "background": '#c5e0b4' })
-                }
-                if (newValue === 3) {
-                    $(ecIdleStatus).html('RUNNING')
-                    $(ecIdleButtonInnerBg).css({ "background": '#c5e0b4' })
-                }
-                if (newValue === 4) {
-                    $(ecIdleStatus).html('COUNTDOWN')
-                    $(ecIdleButtonInnerBg).css({ "background": '#FFA100' })
-                }
-                if (newValue === 5) {
-                    $(ecIdleStatus).html('SHUTDOWN')
-                    $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === -1) {
-                    $(ecIdleStatus).html('DISCONNECTED')
+                    $(ecIdleStatus).html('DC')
                     $(ecIdleButtonInnerBg).css({ "background": 'grey' })
                 }
                 ecIdleState = newValue
@@ -340,7 +328,7 @@
                     $(ecClutchButtonInnerBg).css({ "background": '#c5e0b4' })
                 }
                 if (newValue === -1) {
-                    $(ecClutchStatus).html('DISCONNECTED')
+                    $(ecClutchStatus).html('DC')
                     $(ecClutchButtonInnerBg).css({ "background": 'grey' })
                 }
                 ecClutchState = newValue
