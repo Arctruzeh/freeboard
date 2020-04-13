@@ -91,3 +91,13 @@
     overflow: hidden;
     padding: 4px;
 }
+
+.ec-arrows tspan {
+    text-shadow: 1px 1px 1px #000, -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000;
+}
+
+#ec-number {
+    font-size: 24px;
+    color: white;
+    text-shadow: 1px 1px 1px #000, -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000;
+}
