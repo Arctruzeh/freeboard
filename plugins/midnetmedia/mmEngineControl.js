@@ -409,17 +409,31 @@
             }
 
             if (settingName == "ec_goal_throttle") {
-                document.getElementById("ec-number").innerHTML = newValue
+                if (newValue > 0) {
+                    document.getElementById("ec-number").innerHTML = newValue
+                } else {
+                    document.getElementById("ec-number").innerHTML = "DC"
+                }
             }
 
             if (settingName == "ec_bump_rate_small") {
-                document.getElementById("ec-plus").innerHTML = newValue
+                if (newValue > 0) {
+                    document.getElementById("ec-plus").innerHTML = newValue
                 document.getElementById("ec-minus").innerHTML = newValue
+                } else {
+                    document.getElementById("ec-plus").innerHTML = "-"
+                document.getElementById("ec-minus").innerHTML = "-"
+                }
             }
 
             if (settingName == "ec_bump_rate_large") {
-                document.getElementById("ec-plus-plus").innerHTML = newValue
-                document.getElementById("ec-minus-minus").innerHTML = newValue
+                if (newValue > 0) {
+                    document.getElementById("ec-plus-plus").innerHTML = newValue
+                    document.getElementById("ec-minus-minus").innerHTML = newValue
+                } else {
+                    document.getElementById("ec-plus-plus").innerHTML = "-"
+                document.getElementById("ec-minus-minus").innerHTML = "-"
+                }
             }
 
         }
