@@ -210,28 +210,28 @@
 
         this.onPlusClicked = function (e) {
             e.preventDefault();
-            let payloadSend = '{"button_1":1, "button_2":0}';
+            let payloadSend = '{"button_1":0, "button_2":1}';
             let plSend = JSON.stringify(payloadSend);
             this.sendValue(settings.ec_speed_control_minor, plSend);
         }
 
         this.onMinusClicked = function (e) {
             e.preventDefault();
-            let payloadSend = '{"button_1":0, "button_2":1}';
+            let payloadSend = '{"button_1":1, "button_2":0}';
             let plSend = JSON.stringify(payloadSend);
             this.sendValue(settings.ec_speed_control_minor, plSend);
         }
 
         this.onPlusPlusClicked = function (e) {
             e.preventDefault();
-            let payloadSend = '{"button_1":1, "button_2":0}';
+            let payloadSend = '{"button_1":0, "button_2":1}';
             let plSend = JSON.stringify(payloadSend);
             this.sendValue(settings.ec_speed_control, plSend);
         }
 
         this.onMinusMinusClicked = function (e) {
             e.preventDefault();
-            let payloadSend = '{"button_1":0, "button_2":1}';
+            let payloadSend = '{"button_1":1, "button_2":0}';
             let plSend = JSON.stringify(payloadSend);
             this.sendValue(settings.ec_speed_control, plSend);
         }
