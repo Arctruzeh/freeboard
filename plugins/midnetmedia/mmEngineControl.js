@@ -155,10 +155,12 @@
         this.onEngineClicked = function (e) {
             e.preventDefault()
             let payloadSend
-            if (ecEngineState === 3) {//Running
-                payloadSend = '{"button_1":0, "button_2":1}'
-            } else if (ecEngineState === 1) {//Stopped
+            if (ecEngineState === 1) {//Stopped
                 payloadSend = '{"button_1":1, "button_2":0}'
+            }else if (ecEngineState === 3) {//Running
+                payloadSend = '{"button_1":0, "button_2":1}'
+            } else if (ecEngineState === 4) {//Countdown
+                payloadSend = '{"button_1":0, "button_2":1}'
             } else {
                 payloadSend = ''
             }
