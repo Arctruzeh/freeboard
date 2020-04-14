@@ -335,26 +335,32 @@
             if (settingName == "ec_engine_status") {
                 if (newValue === 1) {
                     $(ecEngineStatus).html('STOPPED')
+                    $(ecEngineStatus).css({ "font-size": "20px" })
                     $(ecEngineButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === 2) {
                     $(ecEngineStatus).html('STARTING')
+                    $(ecEngineStatus).css({ "font-size": "20px" })
                     $(ecEngineButtonInnerBg).css({ "background": '#c5e0b4' })
                 }
                 if (newValue === 3) {
                     $(ecEngineStatus).html('RUNNING')
+                    $(ecEngineStatus).css({ "font-size": "20px" })
                     $(ecEngineButtonInnerBg).css({ "background": '#c5e0b4' })
                 }
                 if (newValue === 4) {
                     $(ecEngineStatus).html('COUNTDOWN')
-                    $(ecEngineButtonInnerBg).css({ "background": '#FFA100' })
+                    $(ecEngineStatus).css({ "font-size": "15px" })
+                    $(ecEngineButtonInnerBg).css({ "background": '#FFA100'})
                 }
                 if (newValue === 5) {
                     $(ecEngineStatus).html('SHUTDOWN')
+                    $(ecEngineStatus).css({ "font-size": "16px" })
                     $(ecEngineButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === -1) {
                     $(ecEngineStatus).html('DC')
+                    $(ecEngineStatus).css({ "font-size": "20px" })
                     $(ecEngineButtonInnerBg).css({ "background": 'grey' })
                 }
                 ecEngineState = newValue
@@ -378,15 +384,18 @@
 
             if (settingName == "ec_clutch_status") {
                 if (newValue === 0) {
-                    $(ecClutchStatus).html('DISENG')
+                    $(ecClutchStatus).html('DISENGAGED')
+                    $(ecClutchStatus).css({ "font-size": "16px" })
                     $(ecClutchButtonInnerBg).css({ "background": '#b4c7e7', 'font-size': '10px' })  
                 }
                 if (newValue === 1) {
                     $(ecClutchStatus).html('ENGAGED')
+                    $(ecClutchStatus).css({ "font-size": "20px" })
                     $(ecClutchButtonInnerBg).css({ "background": '#c5e0b4' })
                 }
                 if (newValue === -1) {
                     $(ecClutchStatus).html('DC')
+                    $(ecClutchStatus).css({ "font-size": "20px" })
                     $(ecClutchButtonInnerBg).css({ "background": 'grey' })
                 }
                 ecClutchState = newValue
