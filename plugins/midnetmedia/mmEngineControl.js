@@ -116,7 +116,9 @@
         var ecIdleButtonInner = $('<div class="ec-big-button-inner"></div>')
         var ecIdleButtonInnerBg = $('<div class="ec-big-button-inner-bg"></div>')
         var ecIdleTitle = $('<div class="ec-24">IDLE</div>')
-        var ecIdleSvg = $('<svg class="ec-svg" width="39px" height="39px" viewBox="0 0 39 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-146.000000, -41.000000)" fill="#000000"><g id="idle" transform="translate(146.000000, 41.000000)"><path d="M19.5,36.5644898 L19.5,36.5644898 C28.9236735,36.5644898 36.5644898,28.9236735 36.5644898,19.5 C36.5644898,10.0763265 28.9236735,2.4355102 19.5,2.4355102 C10.0763265,2.4355102 2.4394898,10.0763265 2.4394898,19.5 C2.4394898,28.9236735 10.0763265,36.5644898 19.5,36.5644898 L19.5,36.5644898 Z M19.5,39 L19.5,39 C8.73122449,39 0,30.2687755 0,19.5 C0,8.73122449 8.73122449,0 19.5,0 C30.2687755,0 39,8.73122449 39,19.5 C39,30.2687755 30.2687755,39 19.5,39 L19.5,39 Z" id="Shape" fill-rule="nonzero"></path><path d="M20.6421429,10.354898 C20.6421429,9.69826531 20.0969388,9.14112245 19.4243878,9.14112245 C18.7478571,9.14112245 18.2066327,9.68234694 18.2066327,10.354898 L18.2066327,20.1168367 C18.2066327,20.4471429 18.3419388,20.7495918 18.5608163,20.9684694 C18.7836735,21.1953061 19.0861224,21.3306122 19.4204082,21.3306122 L26.7388776,21.3306122 C27.4034694,21.3306122 27.9526531,20.7854082 27.9526531,20.1128571 C27.9526531,19.4363265 27.407449,18.895102 26.7388776,18.895102 L20.6421429,18.895102 L20.6421429,10.354898 Z" id="Path"></path></g></g></g></svg>')
+        var ecIdleSvg = $('<div></div>')
+        var ecIdleSvgIdle = $('<svg class="ec-svg" width="39px" height="39px" viewBox="0 0 39 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-146.000000, -41.000000)" fill="#000000"><g id="idle" transform="translate(146.000000, 41.000000)"><path d="M19.5,36.5644898 L19.5,36.5644898 C28.9236735,36.5644898 36.5644898,28.9236735 36.5644898,19.5 C36.5644898,10.0763265 28.9236735,2.4355102 19.5,2.4355102 C10.0763265,2.4355102 2.4394898,10.0763265 2.4394898,19.5 C2.4394898,28.9236735 10.0763265,36.5644898 19.5,36.5644898 L19.5,36.5644898 Z M19.5,39 L19.5,39 C8.73122449,39 0,30.2687755 0,19.5 C0,8.73122449 8.73122449,0 19.5,0 C30.2687755,0 39,8.73122449 39,19.5 C39,30.2687755 30.2687755,39 19.5,39 L19.5,39 Z" id="Shape" fill-rule="nonzero"></path><path d="M20.6421429,10.354898 C20.6421429,9.69826531 20.0969388,9.14112245 19.4243878,9.14112245 C18.7478571,9.14112245 18.2066327,9.68234694 18.2066327,10.354898 L18.2066327,20.1168367 C18.2066327,20.4471429 18.3419388,20.7495918 18.5608163,20.9684694 C18.7836735,21.1953061 19.0861224,21.3306122 19.4204082,21.3306122 L26.7388776,21.3306122 C27.4034694,21.3306122 27.9526531,20.7854082 27.9526531,20.1128571 C27.9526531,19.4363265 27.407449,18.895102 26.7388776,18.895102 L20.6421429,18.895102 L20.6421429,10.354898 Z" id="Path"></path></g></g></g></svg>')
+        var ecIdleSvgResume = $('<svg width="39px" height="39px" viewBox="0 0 39 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Engine-Control-2-buttons" transform="translate(-146.000000, -41.000000)"><g id="resume" transform="translate(146.000000, 41.000000)"><path d="M19.5,36.5644898 L19.5,36.5644898 C28.9236735,36.5644898 36.5644898,28.9236735 36.5644898,19.5 C36.5644898,10.0763265 28.9236735,2.4355102 19.5,2.4355102 C10.0763265,2.4355102 2.4394898,10.0763265 2.4394898,19.5 C2.4394898,28.9236735 10.0763265,36.5644898 19.5,36.5644898 L19.5,36.5644898 Z M19.5,39 L19.5,39 C8.73122449,39 0,30.2687755 0,19.5 C0,8.73122449 8.73122449,0 19.5,0 C30.2687755,0 39,8.73122449 39,19.5 C39,30.2687755 30.2687755,39 19.5,39 L19.5,39 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path><path d="M23,15.5620499 L15.1350416,25 L30.8649584,25 L23,15.5620499 Z" id="Triangle" stroke="#000000" stroke-width="2" transform="translate(23.000000, 20.000000) rotate(90.000000) translate(-23.000000, -20.000000) "></path></g></g></g></svg>')
         var ecIdleStatus = $('<div class="ec-20">-</div>')
 
         var ecClutch = $('<div class="ec-big-button"></div>')
@@ -368,17 +370,22 @@
                 ecEngineState = newValue
             }
 
-            if (settingName == "ec_idle_status") {
-                if (newValue > 0) {
+            if (settingName == "ec_idle_status") { //stored_value
+                if (newValue > 0) { // idling
                     $(ecIdleStatus).html(newValue + ' RPM')
+                    $(ecIdleSvg).html(ecIdleSvgResume)
+                    $(ecIdleTitle).html('RESUME') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
-                if (newValue === 0) {
+                if (newValue === 0) { // running
                     $(ecIdleStatus).html('--- RPM')
+                    $(ecIdleSvg).html(ecIdleSvgIdle)
+                    $(ecIdleTitle).html('IDLE') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#c5e0b4' })
                 }
-                if (newValue === -1) {
+                if (newValue === -1) { // disconnected
                     $(ecIdleStatus).html('DC')
+                    $(ecIdleSvg).html(ecIdleSvgIdle)
                     $(ecIdleButtonInnerBg).css({ "background": 'grey' })
                 }
                 ecIdleState = newValue
