@@ -174,9 +174,9 @@
             e.preventDefault()
             let payloadSend
             if (ecIdleState === 0) {//Running
-                payloadSend = '{"button_1":0, "button_2":1}'
-            } else if (ecIdleState > 0) {//Stopped
                 payloadSend = '{"button_1":1, "button_2":0}'
+            } else if (ecIdleState > 0) {//Idling
+                payloadSend = '{"button_1":0, "button_2":1}'
             } else {
                 payloadSend = ''
             }
