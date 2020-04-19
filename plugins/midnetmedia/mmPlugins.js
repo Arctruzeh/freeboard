@@ -3,7 +3,7 @@ var mmDomain
 if (document.domain === '127.0.0.1'){
     mmDomain = ''
 } else {
-    mmDomain = 'https://mmfreeboard.netlify.com/'
+    mmDomain = 'https://mmfreeboard.netlify.app/'
 }
 
 //$.getScript(mmDomain + "plugins/midnetmedia/singleMonitor.js")
