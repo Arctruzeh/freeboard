@@ -90,14 +90,18 @@
 
     //Implementation
 
+    var mmEngineControlId = 0
+
     var mmEngineControl = function (settings) {
+
+        var thisWidgetId = "mmEngineControl-" + mmEngineControlId++
 
         var self = this
 
         var currentSettings = settings
 
         var ec = $('<div class="ec-"></div>')
-        var ecContainer = $('<div class="ec-container"></div>')
+        var ecContainer = $('<div class="ec-container" id="' + thisWidgetId + '"></div>')
         var ecButtons = $('<div class="ec-buttons"></div>')
         var ecArrows = $('<div class="ec-arrows"></div>')
 
@@ -143,7 +147,7 @@
 
         var ecPlus = $('<svg width="56px" height="33px" viewBox="0 0 56 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="99.6116329%" gradientTransform="translate(0.500000,0.000000),scale(0.535714,1.000000),rotate(90.000000),translate(-0.500000,-0.000000)" id="radialGradient-1"><stop stop-color="#8F8F8F" offset="0%"></stop><stop stop-color="#6B6B6B" offset="100%"></stop></radialGradient></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-232.000000, -61.000000)"><g id="+" transform="translate(232.000000, 63.000000)"><path d="M28.7451866,-0.456229092 L54.508356,28.3331439 C54.8766504,28.7446991 54.8415807,29.3768921 54.4300255,29.7451866 C54.2466612,29.9092765 54.0092345,30 53.7631695,30 L2.23683054,30 C1.68454579,30 1.23683054,29.5522847 1.23683054,29 C1.23683054,28.753935 1.32755402,28.5165083 1.49164398,28.3331439 L27.2548134,-0.456229092 C27.6231079,-0.867784264 28.2553009,-0.902854027 28.6668561,-0.5345596 C28.6943935,-0.509916789 28.7205437,-0.483766507 28.7451866,-0.456229092 Z" id="Triangle-Copy-12" stroke="#42424E" fill="url(#radialGradient-1)"></path><text id="10"  font-family="SourceSansPro-Black, Source Sans Pro" font-size="14" font-weight="700" fill="#FFFFFF"><tspan id="ec-plus" text-anchor="middle" x="28" y="27">-</tspan></text></g></g></g></svg>')
 
-        var ecNumber = $('<div id="ec-number">-</div>')
+        var ecNumber = $('<div class="ec-number">-</div>')
 
         var ecMinus = $('<svg width="56px" height="33px" viewBox="0 0 56 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="99.6116329%" gradientTransform="translate(0.500000,0.000000),scale(0.535714,1.000000),rotate(90.000000),translate(-0.500000,-0.000000)" id="radialGradient-1"><stop stop-color="#8F8F8F" offset="0%"></stop><stop stop-color="#6B6B6B" offset="100%"></stop></radialGradient></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-232.000000, -145.000000)"><g id="-" transform="translate(232.000000, 144.000000)"><path d="M28.7451866,1.54377091 L54.508356,30.3331439 C54.8766504,30.7446991 54.8415807,31.3768921 54.4300255,31.7451866 C54.2466612,31.9092765 54.0092345,32 53.7631695,32 L2.23683054,32 C1.68454579,32 1.23683054,31.5522847 1.23683054,31 C1.23683054,30.753935 1.32755402,30.5165083 1.49164398,30.3331439 L27.2548134,1.54377091 C27.6231079,1.13221574 28.2553009,1.09714597 28.6668561,1.4654404 C28.6943935,1.49008321 28.7205437,1.51623349 28.7451866,1.54377091 Z" id="Triangle-Copy-13" stroke="#42424E" fill="url(#radialGradient-1)" transform="translate(28.000000, 17.000000) scale(1, -1) translate(-28.000000, -17.000000) "></path><text id="10"  font-family="SourceSansPro-Black, Source Sans Pro" font-size="14" font-weight="700" fill="#FFFFFF"><tspan id="ec-minus" text-anchor="middle" x="28" y="14">-</tspan></text></g></g></g></svg>')
 
@@ -427,10 +431,11 @@
             }
 
             if (settingName == "ec_goal_throttle") {
+                console.log(newValue)
                 if (newValue > 0) {
-                    document.getElementById("ec-number").innerHTML = newValue
+                    document.getElementById(thisWidgetId).getElementsByClassName('ec-number')[0].innerHTML = newValue
                 } else {
-                    document.getElementById("ec-number").innerHTML = "DC"
+                    document.getElementById(thisWidgetId).getElementsByClassName('ec-number')[0].innerHTML = "DC"
                 }
             }
 
