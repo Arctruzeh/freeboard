@@ -90,24 +90,26 @@
 
             $(containerElement).empty();
 
-            $(pbButton).mousedown(this.onButtonDown.bind(this));
-            $(pbButton).mouseup(this.onButtonUp.bind(this));
+            //$(pbButton).mousedown(this.onButtonDown.bind(this))
+            //$(pbButton).mouseup(this.onButtonUp.bind(this))
+            $(pbButton).touchstart(this.onButtonDown.bind(this))
+            $(pbButton).touchend(this.onButtonUp.bind(this))
             //$(pbButton).on('mousedown touchstart', this.onButtonDown)
             //$(pbButton).on('mouseup touchend', this.onButtonUp)
 
-            $(pbButtonBg).append(pbButtonLabel);
-            $(pbButtonInner).append(pbButtonBg);
-            $(pbButton).append(pbButtonInner);
+            $(pbButtonBg).append(pbButtonLabel)
+            $(pbButtonInner).append(pbButtonBg)
+            $(pbButton).append(pbButtonInner)
 
-            $(pbContainer).append(pbButton);
+            $(pbContainer).append(pbButton)
 
-            $(containerElement).append(pbContainer);
+            $(containerElement).append(pbContainer)
 
         }
 
         this.onSettingsChanged = function (newSettings) {
 
-            settings = newSettings;
+            settings = newSettings
 
             pbButtonLabel.html((_.isUndefined(newSettings.pb_button_text) ? "" : newSettings.pb_button_text));
 
