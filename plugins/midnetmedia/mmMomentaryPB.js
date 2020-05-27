@@ -90,10 +90,10 @@
 
             $(containerElement).empty();
 
-            //$(pbButton).mousedown(this.onButtonDown.bind(this))
-            //$(pbButton).mouseup(this.onButtonUp.bind(this))
-            $(pbButton).touchstart(this.onButtonDown.bind(this))
-            $(pbButton).touchend(this.onButtonUp.bind(this))
+            $(pbButton).mousedown(this.onButtonDown.bind(this))
+            $(pbButton).mouseup(this.onButtonUp.bind(this))
+            //$(pbButton).touchstart(this.onButtonDown.bind(this))
+            //$(pbButton).touchend(this.onButtonUp.bind(this))
             //$(pbButton).on('mousedown touchstart', this.onButtonDown)
             //$(pbButton).on('mouseup touchend', this.onButtonUp)
 
