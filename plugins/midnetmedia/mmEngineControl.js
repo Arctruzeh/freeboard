@@ -378,14 +378,14 @@
             }
 
             if (settingName == "ec_idle_status") { //stored_value
-                if (newValue > 0) { // idling
+                if (newValue >= 0) { // idling
                     console.log('newValue > 0 idling')
                     $(ecIdleStatus).html(newValue + ' RPM')
                     $(ecIdleSvg).html(ecIdleSvgResume)
                     $(ecIdleTitle).html('RESUME') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
-                if (newValue === 0) { // running
+                if (newValue > 900) { // running
                     console.log('newValue 0 running')
                     $(ecIdleStatus).html('--- RPM')
                     $(ecIdleSvg).html(ecIdleSvgIdle)
