@@ -178,8 +178,10 @@
             e.preventDefault()
             let payloadSend
             if (ecIdleState === 0) {//Running
+                console.log('running payloadsend 1:0')
                 payloadSend = '{"button_1":1, "button_2":0}'
             } else if (ecIdleState > 0) {//Idling
+                console.log('idling payloadsend 0:1')
                 payloadSend = '{"button_1":0, "button_2":1}'
             } else {
                 payloadSend = ''
@@ -376,23 +378,27 @@
 
             if (settingName == "ec_idle_status") { //stored_value
                 if (newValue > 0) { // idling
+                    console.log('idling')
                     $(ecIdleStatus).html(newValue + ' RPM')
                     $(ecIdleSvg).html(ecIdleSvgResume)
                     $(ecIdleTitle).html('RESUME') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === 0) { // running
+                    console.log('running')
                     $(ecIdleStatus).html('--- RPM')
                     $(ecIdleSvg).html(ecIdleSvgIdle)
                     $(ecIdleTitle).html('IDLE') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#c5e0b4' })
                 }
                 if (newValue === -1) { // disconnected
+                    console.log('d/c')
                     $(ecIdleStatus).html('DC')
                     $(ecIdleSvg).html(ecIdleSvgIdle)
                     $(ecIdleButtonInnerBg).css({ "background": 'grey' })
                 }
                 ecIdleState = newValue
+                console.log(ecIdleState)
             }
 
             if (settingName == "ec_clutch_status") {
