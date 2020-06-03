@@ -69,16 +69,18 @@
 
         this.onButtonDown = function (e) {
             e.preventDefault();
-            let payloadSend = '{"button_1":1, "button_2":0}';
-            let plSend = JSON.stringify(payloadSend);
-            this.sendValue(settings.pb_send, plSend);
+            let payloadSend = '{"button_1":1, "button_2":0}'
+            let plSend = JSON.stringify(payloadSend)
+            this.sendValue(settings.pb_send, plSend)
+            console.log('button down')
         }
 
         this.onButtonUp = function (e) {
             e.preventDefault();
-            let payloadSend = '{"button_1":0, "button_2":1}';
-            let plSend = JSON.stringify(payloadSend);
-            this.sendValue(settings.pb_send, plSend);
+            let payloadSend = '{"button_1":0, "button_2":1}'
+            let plSend = JSON.stringify(payloadSend)
+            this.sendValue(settings.pb_send, plSend)
+            console.log('button up')
         }
 
         this.render = function (containerElement) {
