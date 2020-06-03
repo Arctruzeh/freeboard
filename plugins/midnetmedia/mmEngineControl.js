@@ -184,6 +184,7 @@
                 console.log('idling payloadsend 0:1')
                 payloadSend = '{"button_1":0, "button_2":1}'
             } else {
+                console.log('ecIdleState is not 0 or > 0')
                 payloadSend = ''
             }
             let plSend = JSON.stringify(payloadSend)
