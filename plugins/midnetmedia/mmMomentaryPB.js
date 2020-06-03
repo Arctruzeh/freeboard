@@ -58,6 +58,8 @@
 
     var mmMomentaryPB = function (settings) {
 
+        var someNumber = 0
+
         var pbButtonLabel = $('<div class="pb-button-label"></div>');
         var pbButtonBg = $('<div class="pb-button-bg"></div>');
         var pbButtonInner = $('<div class="pb-button-inner"></div>');
@@ -90,12 +92,14 @@
 
             $(containerElement).empty();
 
-            $(pbButton).mousedown(this.onButtonDown.bind(this))
-            $(pbButton).mouseup(this.onButtonUp.bind(this))
+            //$(pbButton).mousedown(this.onButtonDown.bind(this))
+            //$(pbButton).mouseup(this.onButtonUp.bind(this))
             //$(pbButton).touchstart(this.onButtonDown.bind(this))
             //$(pbButton).touchend(this.onButtonUp.bind(this))
             //$(pbButton).on('mousedown touchstart', this.onButtonDown)
             //$(pbButton).on('mouseup touchend', this.onButtonUp)
+            $(pbButton).bind('touchstart', this.onButtonDown)
+            $(pbButton).bind('touchend', this.onButtonUp)
 
             $(pbButtonBg).append(pbButtonLabel)
             $(pbButtonInner).append(pbButtonBg)
