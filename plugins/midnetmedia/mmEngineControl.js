@@ -378,21 +378,21 @@
 
             if (settingName == "ec_idle_status") { //stored_value
                 if (newValue > 0) { // idling
-                    console.log('idling')
+                    console.log('newValue > 0 idling')
                     $(ecIdleStatus).html(newValue + ' RPM')
                     $(ecIdleSvg).html(ecIdleSvgResume)
                     $(ecIdleTitle).html('RESUME') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === 0) { // running
-                    console.log('running')
+                    console.log('newValue 0 running')
                     $(ecIdleStatus).html('--- RPM')
                     $(ecIdleSvg).html(ecIdleSvgIdle)
                     $(ecIdleTitle).html('IDLE') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#c5e0b4' })
                 }
                 if (newValue === -1) { // disconnected
-                    console.log('d/c')
+                    console.log('newValue -1 d/c')
                     $(ecIdleStatus).html('DC')
                     $(ecIdleSvg).html(ecIdleSvgIdle)
                     $(ecIdleButtonInnerBg).css({ "background": 'grey' })
