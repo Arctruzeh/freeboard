@@ -439,7 +439,7 @@
 
             if (settingName == "ec_goal_throttle") {
                 //console.log(newValue)
-                if (newValue > 0) {
+                if (newValue >= 0) {
                     document.getElementById(thisWidgetId).getElementsByClassName('ec-number')[0].innerHTML = newValue
                 } else {
                     document.getElementById(thisWidgetId).getElementsByClassName('ec-number')[0].innerHTML = "DC"
