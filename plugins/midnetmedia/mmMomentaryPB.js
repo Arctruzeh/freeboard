@@ -89,8 +89,11 @@
             //$(pbButton).mousedown(this.onButtonDown.bind(this))
             //$(pbButton).mouseup(this.onButtonUp.bind(this))
             //touch
-            $(pbButton).bind('touchstart', this.onButtonDown)
-            $(pbButton).bind('touchend', this.onButtonUp)
+            //$(pbButton).bind('touchstart', this.onButtonDown)
+            //$(pbButton).bind('touchend', this.onButtonUp)
+            //mouse
+            $(pbButton).bind('mousedown', this.onButtonDown)
+            $(pbButton).bind('mouseup', this.onButtonUp)
 
             $(pbButtonBg).append(pbButtonLabel)
             $(pbButtonInner).append(pbButtonBg)
