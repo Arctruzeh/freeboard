@@ -85,22 +85,12 @@
 
             $(containerElement).empty();
 
-
             //mouse
             //$(pbButton).mousedown(this.onButtonDown.bind(this))
             //$(pbButton).mouseup(this.onButtonUp.bind(this))
             //touch
-            //$(pbButton).touchstart(this.onButtonDown.bind(this))
-            //$(pbButton).touchend(this.onButtonUp.bind(this))
-            //mouse
-            //$(pbButton).bind('mousedown', this.onButtonDown)
-            //$(pbButton).bind('mouseup', this.onButtonUp)
-            //touch
-            //$(pbButton).bind('touchstart', this.onButtonDown)
-            //$(pbButton).bind('touchend', this.onButtonUp)
-            //touch
-            $(pbButton).touchstart = this.onButtonDown
-            $(pbButton).touchend = this.onButtonUp
+            $(pbButton).bind('touchstart', this.onButtonDown)
+            $(pbButton).bind('touchend', this.onButtonUp)
 
             $(pbButtonBg).append(pbButtonLabel)
             $(pbButtonInner).append(pbButtonBg)
