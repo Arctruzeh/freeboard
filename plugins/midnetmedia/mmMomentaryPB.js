@@ -51,13 +51,10 @@
 
     var mmMomentaryPB = function (settings) {
 
-        var someNumber = 0
-
-        var pbButtonLabel = $('<div class="pb-button-label"></div>');
-        var pbButtonBg = $('<div class="pb-button-bg"></div>');
-        var pbButtonInner = $('<div class="pb-button-inner"></div>');
-        var pbButton = $('<div class="pb-button"></div>');
-
+        var pbButtonLabel = $('<div class="pb-button-label"></div>')
+        var pbButtonBg = $('<div class="pb-button-bg"></div>')
+        var pbButtonInner = $('<div class="pb-button-inner"></div>')
+        var pbButton = $('<div class="pb-button"></div>')
         var pbContainer = $('<div class="pb-container"></div>')
 
         this.onButtonDown = function (e) {
@@ -89,8 +86,8 @@
             //$(pbButton).mousedown(this.onButtonDown.bind(this))
             //$(pbButton).mouseup(this.onButtonUp.bind(this))
             //touch
-            $(pbButton).bind('touchstart', this.onButtonDown)
-            $(pbButton).bind('touchend', this.onButtonUp)
+            $(pbButton).bind('touchstart', this.onButtonDown.bind(this))
+            $(pbButton).bind('touchend', this.onButtonUp.bind(this))
 
             $(pbButtonBg).append(pbButtonLabel)
             $(pbButtonInner).append(pbButtonBg)
@@ -106,7 +103,7 @@
 
             settings = newSettings
 
-            pbButtonLabel.html((_.isUndefined(newSettings.pb_button_text) ? "" : newSettings.pb_button_text));
+            pbButtonLabel.html((_.isUndefined(newSettings.pb_button_text) ? "" : newSettings.pb_button_text))
 
         }
 
@@ -126,7 +123,7 @@
             return 1;
         }
 
-        this.onSettingsChanged(settings);
+        this.onSettingsChanged(settings)
 
     };
 
