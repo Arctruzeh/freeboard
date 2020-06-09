@@ -82,10 +82,6 @@
 
             $(containerElement).empty();
 
-            //mouse
-            //$(pbButton).mousedown(this.onButtonDown.bind(this))
-            //$(pbButton).mouseup(this.onButtonUp.bind(this))
-            //touch
             $(pbButton).bind('touchstart mousedown', this.onButtonDown.bind(this))
             $(pbButton).bind('touchend mouseup', this.onButtonUp.bind(this))
 
