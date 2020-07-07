@@ -24,8 +24,13 @@
                 type: "calculated"
             },
             {
-                name: "ec_idle_status",
+                name: "ec_engine_run_status",
                 display_name: "Idle Current Status",
+                type: "calculated"
+            },
+            {
+                name: "ec_stored_value",
+                display_name: "Idle Stored Value",
                 type: "calculated"
             },
             {
@@ -157,6 +162,7 @@
         var ecIdleState
         var ecClutchState
         var ecLightState
+        var ecStoredValue
 
         this.onEngineClicked = function (e) {
             e.preventDefault()
@@ -177,14 +183,14 @@
         this.onIdleClicked = function (e) {
             e.preventDefault()
             let payloadSend
-            if (ecIdleState === 0) {//Running
+            if (ecIdleState === 2) {//Running
                 console.log('running payloadsend 1:0')
                 payloadSend = '{"button_1":1, "button_2":0}'
-            } else if (ecIdleState > 0) {//Idling
+            } else if (ecIdleState === 1) {//Idling
                 console.log('idling payloadsend 0:1')
                 payloadSend = '{"button_1":0, "button_2":1}'
             } else {
-                console.log('ecIdleState is not 0 or > 0')
+                console.log('engine is off or dc')
                 payloadSend = ''
             }
             let plSend = JSON.stringify(payloadSend)
@@ -377,26 +383,38 @@
                 ecEngineState = newValue
             }
 
-            if (settingName == "ec_idle_status") { //stored_value
-                if (newValue > 0) { // idling
-                    console.log('newValue > 0 idling')
-                    $(ecIdleStatus).html(newValue + ' RPM')
+            if (settingName == "ec_stored_value"){
+                ecStoredValue = newValue
+                console.log(newValue)
+            }
+
+            if (settingName == "ec_engine_run_status") { 
+                if (newValue === -1) { // disconnected
+                    //console.log('newValue -1 d/c')
+                    $(ecIdleStatus).html('DC')
+                    $(ecIdleSvg).html(ecIdleSvgIdle)
+                    $(ecIdleButtonInnerBg).css({ "background": 'grey' })
+                }
+                if (newValue === 0) { // off
+                    //console.log('newValue 0 off')
+                    $(ecIdleStatus).html('OFF')
                     $(ecIdleSvg).html(ecIdleSvgResume)
                     $(ecIdleTitle).html('RESUME') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
-                if (newValue === 0) { // running
-                    console.log('newValue 0 running')
+                if (newValue === 1) { // idling
+                    //console.log('newValue 1 idling')
+                    $(ecIdleStatus).html(ecStoredValue + ' RPM')
+                    $(ecIdleSvg).html(ecIdleSvgResume)
+                    $(ecIdleTitle).html('RESUME') // change title to idle ecIdleTitle
+                    $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
+                }
+                if (newValue === 2) { // running
+                    //console.log('newValue 2 running')
                     $(ecIdleStatus).html('--- RPM')
                     $(ecIdleSvg).html(ecIdleSvgIdle)
                     $(ecIdleTitle).html('IDLE') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#c5e0b4' })
-                }
-                if (newValue === -1) { // disconnected
-                    console.log('newValue -1 d/c')
-                    $(ecIdleStatus).html('DC')
-                    $(ecIdleSvg).html(ecIdleSvgIdle)
-                    $(ecIdleButtonInnerBg).css({ "background": 'grey' })
                 }
                 ecIdleState = newValue
                 console.log(ecIdleState)
