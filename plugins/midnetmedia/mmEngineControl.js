@@ -385,39 +385,33 @@
 
             if (settingName == "ec_stored_value"){
                 ecStoredValue = newValue
-                console.log(newValue)
             }
 
             if (settingName == "ec_engine_run_status") { 
                 if (newValue === -1) { // disconnected
-                    //console.log('newValue -1 d/c')
                     $(ecIdleStatus).html('DC')
                     $(ecIdleSvg).html(ecIdleSvgIdle)
                     $(ecIdleButtonInnerBg).css({ "background": 'grey' })
                 }
                 if (newValue === 0) { // off
-                    //console.log('newValue 0 off')
                     $(ecIdleStatus).html('OFF')
                     $(ecIdleSvg).html(ecIdleSvgResume)
                     $(ecIdleTitle).html('RESUME') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === 1) { // idling
-                    //console.log('newValue 1 idling')
                     $(ecIdleStatus).html(ecStoredValue + ' RPM')
                     $(ecIdleSvg).html(ecIdleSvgResume)
                     $(ecIdleTitle).html('RESUME') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#b4c7e7' })
                 }
                 if (newValue === 2) { // running
-                    //console.log('newValue 2 running')
                     $(ecIdleStatus).html('--- RPM')
                     $(ecIdleSvg).html(ecIdleSvgIdle)
                     $(ecIdleTitle).html('IDLE') // change title to idle ecIdleTitle
                     $(ecIdleButtonInnerBg).css({ "background": '#c5e0b4' })
                 }
                 ecIdleState = newValue
-                console.log(ecIdleState)
             }
 
             if (settingName == "ec_clutch_status") {
