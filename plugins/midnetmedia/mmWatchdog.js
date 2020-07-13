@@ -171,16 +171,16 @@
             let payloadminout;
             switch (e.target.className) {
                 case 'wd-btn wd-up wd-btn-up-dos':
-                    plminout = '{"button_1":0, "button_2":1}';
+                    payloadminout = '{"button_1":0, "button_2":1}';
                     break;
                 case 'wd-plus wd-btn-up-dos':
-                    plminout = '{"button_1":0, "button_2":1}';
+                    payloadminout = '{"button_1":0, "button_2":1}';
                     break;
                 case 'wd-btn wd-down wd-btn-down-dos':
-                    plminout = '{"button_1":1, "button_2":0}';
+                    payloadminout = '{"button_1":1, "button_2":0}';
                     break;
                 case 'wd-minus wd-btn-down-dos':
-                    plminout = '{"button_1":1, "button_2":0}';
+                    payloadminout = '{"button_1":1, "button_2":0}';
                     break;
             }
             let plminout = JSON.stringify(payloadminout);
@@ -192,16 +192,16 @@
             let payloadmininlet;
             switch (e.target.className) {
                 case 'wd-btn wd-up wd-btn-up-tres':
-                    plmininlet = '{"button_1":0, "button_2":1}';
+                    payloadmininlet = '{"button_1":0, "button_2":1}';
                     break;
                 case 'wd-plus wd-btn-up-tres':
-                    plmininlet = '{"button_1":0, "button_2":1}';
+                    payloadmininlet = '{"button_1":0, "button_2":1}';
                     break;
                 case 'wd-btn wd-down wd-btn-down-tres':
-                    plmininlet = '{"button_1":1, "button_2":0}';
+                    payloadmininlet = '{"button_1":1, "button_2":0}';
                     break;
                 case 'wd-minus wd-btn-down-tres':
-                    plmininlet = '{"button_1":1, "button_2":0}';
+                    payloadmininlet = '{"button_1":1, "button_2":0}';
                     break;
             }
             let plmininlet = JSON.stringify(payloadmininlet);
