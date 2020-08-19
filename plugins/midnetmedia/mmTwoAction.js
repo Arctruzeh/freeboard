@@ -9,206 +9,138 @@
 
         description: "Send messages and receive a status",
 
+        fill_size: true,
+
         settings: [
             {
-                name: "title",
+                name: "ta_title",
                 display_name: "Title",
                 type: "text",
-                default: " ",
-                required: true
             },
             {
-                name: "value",
-                display_name: "Current Status",
-                description: 'Subscribe to this topic for status updates. If not using lookup table, return a value like "{"text": "CLOSED", "color": "#F5F5F5", "textColor": "red"}"',
-                type: "calculated"
+                name: "ta_status",
+                display_name: "Status",
+                type: "calculated",
             },
             {
-                name: "callback",
+                name: "ta_send",
                 display_name: "Send",
-                description: "Publish messages to this topic",
+                type: "calculated",
+            },
+            {
+                name: "ta_l_text",
+                display_name: "Left Text",
+                type: "calculated",
+            },
+            {
+                name: "ta_r_text",
+                display_name: "Right Text",
                 type: "calculated"
-            },
-            {
-                name: "status_text",
-                display_name: "Default Status Text",
-                type: "text",
-                default_value: "Status"
-            },
-            {
-                name: "show_buttons",
-                display_name: "Show Control Buttons",
-                type: "option",
-                options: [{ name: "Triangles", value: "triangle" }, { name: "Squares", value: "square" }, { name: "Hide Buttons", value: "hide" }],
-                default_value: "hide"
-            },
-            {
-                name: "left_button",
-                display_name: "Left Button Color",
-                type: "option",
-                options: [{ name: "Red", value: "red" }, { name: "Orange", value: "orange" }, { name: "Yellow", value: "yellow" }, { name: "Green", value: "green" }, { name: "Blue", value: "blue" }, { name: "Purple", value: "purple" }, { name: "Gray", value: "#9E9E9E" }, { name: "Black", value: "black" }],
-                default_value: "blue"
-            },
-            {
-                name: "left_button_text",
-                display_name: "Left Button Text",
-                type: "text",
-                default_value: "-"
-            },
-            {
-                name: "right_button",
-                display_name: "Right Button Color",
-                type: "option",
-                options: [{ name: "Red", value: "red" }, { name: "Orange", value: "orange" }, { name: "Yellow", value: "yellow" }, { name: "Green", value: "green" }, { name: "Blue", value: "blue" }, { name: "Purple", value: "purple" }, { name: "Gray", value: "#9E9E9E" }, { name: "Black", value: "black" }],
-                default_value: "green"
-            },
-            {
-                name: "right_button_text",
-                display_name: "Right Button Text",
-                type: "text",
-                default_value: "+"
-            },
-            {
-                name: "has_lookup",
-                display_name: "Use Lookup Table?",
-                type: "boolean",
-                default_value: true
-            },
-            {
-                name: "variables",
-                display_name: "Lookup Table",
-                description: '[{"value": 1, "text": "CLOSED", "color": "#F5F5F5", "textColor": "red"}, {...}]',
-                type: "json",
-                default_value: 'Off'
             }
         ],
         newInstance: function (settings, newInstanceCallback) {
-            newInstanceCallback(new mmTwoAction(settings));
+            newInstanceCallback(new mmTwoAction(settings))
         }
-    });
+    })
 
-    var mmTwoActionID = 0;
+    var mmTwoActionId = 0
 
     //Implementation
 
     var mmTwoAction = function (settings) {
 
-        var self = this;
-        var thisWidgetId = "twoActionControl-" + mmTwoActionID++;
-        var currentSettings = settings;
-        var notActive = "#9E9E9E";
-        var titleElement = $('<div class="section-title"></div>');
-        var box = $('<div class="two-action-box" id="' + thisWidgetId + '"></div>');
+        var thisWidgetId = "mmTwoAction-" + mmTwoActionId++
 
-        var upTriangle = $('<div class="control-icon"><span class="opsBam opsBam-openButton"><span class="openText"></span></span></div>');
-        var downTriangle = $('<div class="control-icon"><span class="opsBam opsBam-closeButton"><span class="closeText"></span></span></div>');
-        var upSquare = $('<div class="control-icon"><span class="opsBam opsBam-openSquare"><span class="openText vertCenter"></span></span></div>');
-        var downSquare = $('<div class="control-icon"><span class="opsBam opsBam-closeSquare"><span class="closeText vertCenter"></span></span></div>');
-        var statusRect = $('<div class="rectangle"><div class="twoActText"></div></div>');
+        var self = this
 
-        function statusText(text, color, textColor) {
-            textColor = textColor || "white";
-            document.getElementById(thisWidgetId).getElementsByClassName('twoActText')[0].textContent = text;
-            document.getElementById(thisWidgetId).getElementsByClassName('twoActText')[0].style.color = textColor;
-            document.getElementById(thisWidgetId).getElementsByClassName('rectangle')[0].style.backgroundColor = color;
-        }
+        var currentSettings = settings
 
-        function addText() {
-            document.getElementById(thisWidgetId).getElementsByClassName('twoActText')[0].textContent = currentSettings.status_text;
-            if (currentSettings.show_buttons != "hide") {
-                document.getElementById(thisWidgetId).getElementsByClassName('closeText')[0].textContent = currentSettings.left_button_text;
-                document.getElementById(thisWidgetId).getElementsByClassName('openText')[0].textContent = currentSettings.right_button_text;
-            }
-        }
+        var taContainer = $('<div class="ta-container"   id="' + thisWidgetId + '"></div>')
 
-        this.onClick = function (e) {
+        var taFlex = $('<div class="ta-flex"></div>')
 
+        var taTop = $('<div class="ta-top"></div>')
+
+        var taTitle = $('<div class="ta-title"></div>')
+
+        var taUp = $('<svg width="70px" height="63px" viewBox="0 0 70 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="99.6116329%" gradientTransform="translate(0.500000,0.000000),scale(0.857143,1.000000),rotate(90.000000),translate(-0.500000,-0.000000)" id="radialGradient-1"><stop stop-color="#8F8F8F" offset="0%"></stop><stop stop-color="#6B6B6B" offset="100%"></stop></radialGradient></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="+" transform="translate(0.000000, 2.000000)"><path d="M35.8727652,-1.01744235 L69.1676788,58.5118598 C69.4372712,58.9938748 69.2650687,59.6031729 68.7830538,59.8727652 C68.633887,59.9561947 68.4658264,60 68.2949136,60 L1.70508641,60 C1.15280166,60 0.705086415,59.5522847 0.705086415,59 C0.705086415,58.8290872 0.748891753,58.6610266 0.832321167,58.5118598 L34.1272348,-1.01744235 C34.3968271,-1.49945728 35.0061252,-1.6716598 35.4881402,-1.40206743 C35.6494245,-1.31186063 35.7825584,-1.17872668 35.8727652,-1.01744235 Z" id="Triangle-Copy-12" stroke="#42424E" fill="url(#radialGradient-1)"></path><text id="10" font-family="SourceSansPro-Black, Source Sans Pro" font-size="14" font-weight="700" fill="#FFFFFF"><tspan class="ta-up" text-anchor="middle" x="35" y="47.5806452"></tspan></text></g></g></svg>')
+
+        var taStatus = $('<div class="ta-status"></div>')
+        
+        var taDown = $('<svg width="70px" height="62px" viewBox="0 0 70 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <defs> <radialGradient cx="50%" cy="0%" fx="50%" fy="0%" r="99.6116329%" gradientTransform="translate(0.500000,0.000000),scale(0.843091,1.000000),rotate(90.000000),translate(-0.500000,-0.000000)" id="radialGradient-1"><stop stop-color="#8F8F8F" offset="0%"></stop> <stop stop-color="#6B6B6B" offset="100%"></stop></radialGradient></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="-"><path d="M35.8692912,-0.269167672 L69.150304,58.259798 C69.4232985,58.7398942 69.2554094,59.350395 68.7753132,59.6233895 C68.6246567,59.7090565 68.4543223,59.7540984 68.2810128,59.7540984 L1.7189872,59.7540984 C1.16670245,59.7540984 0.718987203,59.3063831 0.718987203,58.7540984 C0.718987203,58.5807888 0.764029064,58.4104544 0.849696039,58.259798 L34.1307088,-0.269167672 C34.4037034,-0.749263925 35.0142041,-0.917153014 35.4943004,-0.644158449 C35.6507674,-0.555187443 35.7803202,-0.425634693 35.8692912,-0.269167672 Z" id="Triangle-Copy-13" stroke="#42424E" fill="url(#radialGradient-1)" transform="translate(35.000000, 30.245902) scale(1, -1) translate(-35.000000, -30.245902) "></path><text id="10" font-family="SourceSansPro-Black, Source Sans Pro" font-size="14" font-weight="700" fill="#FFFFFF"><tspan id="amazing1" class="ta-down" text-anchor="middle" x="36" y="18.647541"></tspan></text></g></g></svg>')
+
+        this.onUpClicked = function (e) {
             e.preventDefault();
-
-            let payload;
-
-            // the text element and the icons both need to be clicky
-            switch (e.target.className) {
-                case 'opsBam opsBam-openButton':
-                case 'opsBam opsBam-openSquare':
-                case 'openText vertCenter':
-                case 'openText':
-                    payload = '{"button_1":0, "button_2":1}';
-                    break;
-                case 'opsBam opsBam-closeSquare':
-                case 'opsBam opsBam-closeButton':
-                case 'closeText vertCenter':
-                case 'closeText':
-                    payload = '{"button_1":1, "button_2":0}';
-                    break;
-            }
-
-            let pl = JSON.stringify(payload);
-            this.sendValue(currentSettings.callback, pl);
+            let payloadSend = '{"button_1":0, "button_2":1}';
+            let plSend = JSON.stringify(payloadSend);
+            this.sendValue(settings.ta_send, plSend);
         }
 
+        this.onDownClicked = function (e) {
+            e.preventDefault();
+            let payloadSend = '{"button_1":1, "button_2":0}';
+            let plSend = JSON.stringify(payloadSend);
+            this.sendValue(settings.ta_send, plSend);
+        }
 
-        this.render = function (element) {
-            $(element).append(titleElement).append(box);
-            // add the elements to the widget
-            if (currentSettings.show_buttons == "triangle") {
-                upTriangle.prependTo(box);
-                statusRect.prependTo(box);
-                downTriangle.prependTo(box);
-                $(upTriangle).click(this.onClick.bind(this));
-                $(downTriangle).click(this.onClick.bind(this));
-                $(upTriangle).on('mousedown mouseup', function (e) {
-                    $(this).css('color', e.type === 'mousedown' ? currentSettings.right_button : notActive);
-                });
-                $(downTriangle).on('mousedown mouseup', function (e) {
-                    $(this).css('color', e.type === 'mousedown' ? currentSettings.left_button : notActive);
-                });
-            } else if (currentSettings.show_buttons == "square") {
-                upSquare.prependTo(box);
-                statusRect.prependTo(box);
-                downSquare.prependTo(box);
-                $(upSquare).click(this.onClick.bind(this));
-                $(downSquare).click(this.onClick.bind(this));
-                $(upSquare).on('mousedown mouseup', function (e) {
-                    $(this).css('color', e.type === 'mousedown' ? currentSettings.right_button : notActive);
-                });
-                $(downSquare).on('mousedown mouseup', function (e) {
-                    $(this).css('color', e.type === 'mousedown' ? currentSettings.left_button : notActive);
-                });
-            } else {
-                // the user doesn't want the buttons shown
-                statusRect.addClass('loneRect');
-                statusRect.prependTo(box);
-            }
-            addText();
+        this.render = function (containerElement) {
+
+            $(containerElement).empty()
+
+            $(taUp).click(this.onUpClicked.bind(this))
+
+            $(taDown).click(this.onDownClicked.bind(this))
+
+            $(taFlex).append(taDown).append(taStatus).append(taUp)
+
+            $(taTop).append(taTitle)
+
+            $(taContainer).append(taTop).append(taFlex)
+
+            $(containerElement).append(taContainer)
+
         }
 
         this.onSettingsChanged = function (newSettings) {
-            currentSettings = newSettings;
-            titleElement.html((_.isUndefined(newSettings.title) ? "" : newSettings.title));
+
+            currentSettings = newSettings
+
+            taTitle.html(newSettings.ta_title)
+            
+            //taStatus.html(newSettings.ta_status)
+
+            //document.getElementById(thisWidgetId).getElementsByClassName('ta-down')[0].innerHTML = newSettings.ta_l_text
+
+            //document.getElementById(thisWidgetId).getElementsByClassName('ta-up')[0].innerHTML = newSettings.ta_r_text
+
         }
 
         this.onCalculatedValueChanged = function (settingName, newValue) {
-            if (settingName == "value") {
-                if (currentSettings.has_lookup && currentSettings.variables != "Off") {
-                    let statElem;
-                    let valArray = JSON.parse(currentSettings.variables);
-                    statElem = valArray.filter(function (x) { return x.value == newValue });
-                    statusText(statElem[0].text, statElem[0].color, statElem[0].textColor);
-                } else {
-                    let statElem = JSON.parse(newValue);
-                    statusText(statElem.text, statElem.color, statElem.textColor);
-                }
+
+            if(settingName === "ta_status"){
+                taStatus.html(newValue)
             }
+
+            if(settingName === "ta_l_text"){
+                document.getElementById(thisWidgetId).getElementsByClassName('ta-down')[0].innerHTML = newValue
+            }
+
+            if(settingName === "ta_r_text"){
+                document.getElementById(thisWidgetId).getElementsByClassName('ta-up')[0].innerHTML = newValue
+            }
+
         }
 
-        this.onDispose = function () { }
+        this.onDispose = function () {
+
+        }
 
         this.getHeight = function () {
-            return 2;
+            return 2
         }
 
-        this.onSettingsChanged(settings);
+        this.onSettingsChanged(settings)
+
     }
 
 }())
